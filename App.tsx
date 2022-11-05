@@ -18,6 +18,7 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import { Button } from 'react-native-windows';
 
 import {
   Colors,
@@ -57,6 +58,9 @@ const Section: React.FC<
   );
 };
 
+function startService(): void {
+}
+
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -70,30 +74,31 @@ const App = () => {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
+      <View
+        style={{
+          backgroundColor: isDarkMode ? Colors.black : Colors.white,
+        }}>
+          <Section title="Sidebar">
+
           </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
+      </View>
+      <View
+        style={{
+          backgroundColor: isDarkMode ? Colors.black : Colors.white,
+        }}>
+          <View>
+            <Section title="selected device"></Section>
+          </View>
+          <View>
+            <Section title="paired devices"></Section>
+          </View>
+          <Button title="Start Service" onPress={startService}/>
+      </View>
+      <View>
+        <Text>
+          
+        </Text>
+      </View>
     </SafeAreaView>
   );
 };
